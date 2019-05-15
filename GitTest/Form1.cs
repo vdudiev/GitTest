@@ -59,6 +59,14 @@ namespace GitTest
             }
             return s;
         }
+
+        private void buttonChart_Click(object sender, EventArgs e)
+        {
+            chartFunction.Series[0].Points.AddXY(10, 10);
+            chartFunction.Series[0].Points.AddXY(100, 20);
+            chartFunction.Series[0].Points.AddXY(200, 100);
+
+        }
     }
 }
 
