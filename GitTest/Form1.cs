@@ -50,7 +50,7 @@ namespace GitTest
         int countOfDel(int N)
         {
             int s = 0;
-            for (int i = 1; i < N/2; i++)
+            for (int i = 1; i < Math.Sqrt(N); i++)
             {
                 if (N % i == 0)
                 {
@@ -62,10 +62,17 @@ namespace GitTest
 
         private void buttonChart_Click(object sender, EventArgs e)
         {
-            chartFunction.Series[0].Points.AddXY(10, 10);
-            chartFunction.Series[0].Points.AddXY(100, 20);
-            chartFunction.Series[0].Points.AddXY(200, 100);
+            StreamReader srt = new StreamReader("stat.txt");
+            while (!srt.EndOfStream)
+            {
+                string[] s = srt.ReadLine().Split();
+                string ss = s[0].Split(':')[2];
+                ss= ss.Replace('.', ',');
+                double t = Convert.ToDouble(ss);
+                double n = Convert.ToDouble(s[1]);
 
+                chartFunction.Series[0].Points.AddXY(n,t);
+            }
         }
     }
 }
