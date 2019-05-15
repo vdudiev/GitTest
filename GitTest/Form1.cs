@@ -70,9 +70,10 @@ namespace GitTest
                 ss= ss.Replace('.', ',');
                 double t = Convert.ToDouble(ss);
                 double n = Convert.ToDouble(s[1]);
-
                 chartFunction.Series[0].Points.AddXY(n,t);
+                
             }
+            srt.Close();
         }
     }
 }
