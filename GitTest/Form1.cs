@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace GitTest
 {
@@ -17,17 +18,34 @@ namespace GitTest
             InitializeComponent();
         }
 
+
+       
+
+
+
         private void button1_Click(object sender, EventArgs e)
         {
-            DateTime timeStart = DateTime.Now;
-            labelTimeStart.Text = timeStart.ToString();
-            this.Refresh();
-            countOfDel(1000000000);
-            DateTime timeEnd = DateTime.Now;
-            labelTimeEnd.Text = timeEnd.ToString();
-            TimeSpan timeDelta = timeEnd - timeStart;
-            labelTimeDelta.Text = timeDelta.ToString();
+            int n = 100;
+            while (n <= 1000000000)
+            {
+                StreamWriter sr = new StreamWriter("stat.txt", true);
+                DateTime timeStart = DateTime.Now;
+                labelTimeStart.Text = timeStart.ToString();
+                labelPara.Text = n.ToString();
+                this.Refresh();
+                countOfDel(n);
+                DateTime timeEnd = DateTime.Now;
+                labelTimeEnd.Text = timeEnd.ToString();
+                TimeSpan timeDelta = timeEnd - timeStart;
+                labelTimeDelta.Text = timeDelta.ToString();
+                sr.WriteLine(timeDelta + "\t" + n);                    
+                sr.Close();
+                n *= 10;
+            }
         }
+    
+        
+        
 
         int countOfDel(int N)
         {
@@ -43,3 +61,5 @@ namespace GitTest
         }
     }
 }
+
+
