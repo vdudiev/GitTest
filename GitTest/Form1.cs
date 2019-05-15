@@ -21,9 +21,15 @@ namespace GitTest
         {
             DateTime timeStart = DateTime.Now;
             labelTimeStart.Text = timeStart.ToString();
+            this.Refresh();
+            countOfDel(1000000000);
+            DateTime timeEnd = DateTime.Now;
+            labelTimeEnd.Text = timeEnd.ToString();
+            TimeSpan timeDelta = timeEnd - timeStart;
+            labelTimeDelta.Text = timeDelta.ToString();
         }
 
-        public int Del(int N)
+        int countOfDel(int N)
         {
             int s = 0;
             for (int i = 1; i < N/2; i++)
