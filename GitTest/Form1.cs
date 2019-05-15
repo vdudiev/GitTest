@@ -22,5 +22,18 @@ namespace GitTest
             DateTime timeStart = DateTime.Now;
             labelTimeStart.Text = timeStart.ToString();
         }
+
+        public int Del(int N)
+        {
+            int s = 0;
+            for (int i = 1; i < N/2; i++)
+            {
+                if (N % i == 0)
+                {
+                    s++;
+                }
+            }
+            return s;
+        }
     }
 }
